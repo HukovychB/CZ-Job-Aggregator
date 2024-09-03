@@ -6,11 +6,15 @@ import mysql.connector as sql
 from app import app, conn, cur
 from .helpers import login_required
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
     """Render Home page"""
-    return render_template("index.html")
+    if request.method == "POST":
+        
+        return render_template("index.html")
+    else:
+        return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -88,7 +92,3 @@ def register():
         return redirect("/")
     else:
         return render_template("register.html")
-
-@app.route("/check_session")
-def check_session():
-    return str(session)

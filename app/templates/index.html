@@ -5,5 +5,15 @@
 {% endblock %}
 
 {% block main %}
-
+    <h1 class="display-1">Welcome to JOBS</h1>
+    <p class="lead">Search for jobs of your interest</p>
+    <form>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="job_name" placeholder="Job name (e.g. Business Analyst)" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="location" placeholder="Location (e.g. Prague)" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
 {% endblock %}

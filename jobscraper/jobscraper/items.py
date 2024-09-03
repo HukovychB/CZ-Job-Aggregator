@@ -7,9 +7,10 @@ import scrapy
 
 
 class JobsItem(scrapy.Item):
-    url = scrapy.Field()
     title = scrapy.Field()
+    link = scrapy.Field()
     company = scrapy.Field()
     location = scrapy.Field()
-    description = scrapy.Field()
-    date = scrapy.Field()
+    published = scrapy.Field()
+    salary = scrapy.Field()
+    source = scrapy.Field()
