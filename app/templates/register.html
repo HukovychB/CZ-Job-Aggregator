@@ -4,18 +4,27 @@
     Register
 {% endblock %}
 
-{% block main %}
-    <form action="/register" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" required>
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" required>
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Register</button>
-    </form>
-    <h1 id="form_error"></h1>
+{% block background %}
+    <div class="background_image">
+        <img src="../static/login.jpg" alt="Register Background">   
+    </div>
+{% endblock %}
+
+{% block main %}]
+    <div class="login-register-container">
+        <h2 class="login-header">Register to <b>JobS</b></h2>
+        <form action="/register" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" required>
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" required>
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Confirm Password" type="password" required>
+            </div>
+            <button class="button-27" type="submit">Register</button>
+        </form>
+        <a href="/login" id="login-register">Already have an account?</a>
+    </div>
 {% endblock %}

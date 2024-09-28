@@ -4,14 +4,24 @@
     Log In
 {% endblock %}
 
+{% block background %}
+    <div class="background_image">
+        <img src="../static/login.jpg" alt="Login Background">   
+    </div>
+{% endblock %}
+
 {% block main %}
-    <form action="/login" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" required>
-        </div>
-        <div class="mb-3">
-            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Log In</button>
-    </form>
+    <div class="login-register-container">
+        <h2 class="login-header">Log in to <b>JobS</b></h2>
+        <form action="/login" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text" required>
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" required>
+            </div>
+            <button class="button-27" type="submit">Log In</button>
+        </form>
+        <a href="/register" id="login-register">Do not have an account?</a>
+    </div>
 {% endblock %}

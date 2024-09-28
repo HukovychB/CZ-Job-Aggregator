@@ -1,7 +1,4 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+# MODEL FOR SCRAPED ITEMS
 
 import scrapy
 
@@ -14,3 +11,4 @@ class JobsItem(scrapy.Item):
     published = scrapy.Field()
     salary = scrapy.Field()
     source = scrapy.Field()
+    run_id = scrapy.Field()

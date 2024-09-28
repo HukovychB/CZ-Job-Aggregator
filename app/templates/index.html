@@ -4,16 +4,62 @@
     Home
 {% endblock %}
 
+{% block background %}
+    <div class="background_image">
+        <img src="../static/main_background.jpg" alt="Main Background">   
+    </div>
+{% endblock %}
+
 {% block main %}
-    <h1 class="display-1">Welcome to JOBS</h1>
-    <p class="lead">Search for jobs of your interest</p>
-    <form>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="job_name" placeholder="Job name (e.g. Business Analyst)" type="text" required>
+    <script src="../static/index.js"></script>
+    <div id="main-box">
+        <h2 class="display-1"><b>Welcome to Job<span id="animated-text"></span></b></h2>
+        <p class="lead">Search for jobs of your interest</p>
+        <div id="form-container">
+            <form action="/" method="post">
+                <div class="mb-3 text-input-container">
+                    <input autocomplete="off" autofocus class="form-control w-auto" name="job_name" placeholder="Job name (e.g. Business Analyst)" type="text" required>
+                </div>
+                <div class="mb-3 text-input-container">
+                    <input autocomplete="off" autofocus class="form-control w-auto" name="location" placeholder="Location (e.g. Prague)" type="text" required>
+                </div>
+                <div class="mb-3 justify-content-center" id="sites_select">
+                    <label id="sites_select_label" class="form-label align-center">Select where to look up for jobs:</label>
+                    <div class="row" id="checkboxes">
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="all_sites" name="sites" value="all">
+                                <label class="form-check-label" for="all_sites">ALL</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="site1" name="sites" value="linkedin">
+                                <label class="form-check-label" for="site1">LinkedIn</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="site2" name="sites" value="indeed">
+                                <label class="form-check-label" for="site2">Indeed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="site3" name="sites" value="startup">
+                                <label class="form-check-label" for="site3">Startupjobs</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="site4" name="sites" value="jobs">
+                                <label class="form-check-label" for="site4">Jobs.cz</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="site5" name="sites" value="prace">
+                                <label class="form-check-label" for="site5">Prace.cz</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="button-28" type="submit">Search</button>
+            </form>    
         </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="location" placeholder="Location (e.g. Prague)" type="text" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+    </div>
 {% endblock %}

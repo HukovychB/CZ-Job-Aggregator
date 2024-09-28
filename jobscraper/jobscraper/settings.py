@@ -1,17 +1,23 @@
-# Scrapy settings for jobscraper project
-#
+# SCRAPY SETTINGS
+
 # For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# commonly used.
+
+import os
 
 BOT_NAME = "jobscraper"
 
-SPIDER_MODULES = ["jobscraper.spiders"]
-NEWSPIDER_MODULE = "jobscraper.spiders"
+SPIDER_MODULES = ["jobscraper.jobscraper.spiders"]
+NEWSPIDER_MODULE = "jobscraper.jobscraper.spiders"
 
+# ScrapeOps settings
+SCRAPEOPS_API_KEY = os.getenv("SCRAPEOPS_API_KEY")
+# Proxy 
+SCRAPEOPS_PROXY_ENABLED = True
+# Browser headers
+SCRAPEOPS_FAKE_BROWSER_HEADER_ENDPOINT = 'https://headers.scrapeops.io/v1/browser-headers'
+SCRAPEOPS_FAKE_BROWSER_HEADER_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "jobscraper (+http://www.yourdomain.com)"
@@ -20,7 +26,8 @@ NEWSPIDER_MODULE = "jobscraper.spiders"
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 1
+DOWNLOAD_DELAY = 2
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -51,7 +58,8 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-
+    'jobscraper.jobscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware': 400,
+    'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,
 }
 
 # Enable or disable extensions
@@ -63,7 +71,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-
+    "jobscraper.jobscraper.pipelines.JobscraperPipeline": 300,
+    "jobscraper.jobscraper.pipelines.SaveToMySQLPipeline": 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
